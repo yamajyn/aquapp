@@ -3,6 +3,19 @@ import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import Amplify from "aws-amplify";
 import { Authenticator } from "aws-amplify-react";
 import { Header } from "./src/header";
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { SideNavi } from "./src/sideNavi";
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#222"
+    },
+    secondary: {
+      main: "#f44336"
+    }
+  }
+});
 
 Amplify.configure({
   Auth: {
@@ -13,18 +26,21 @@ Amplify.configure({
 });
 
 const App = () => (
-  <BrowserRouter>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/login" component={Login} />
-      <Route path="/friends" component={Friends} />
-    </Switch>
-  </BrowserRouter>
+  <MuiThemeProvider theme={theme}>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/login" component={Login} />
+        <Route path="/friends" component={Friends} />
+      </Switch>
+    </BrowserRouter>
+  </MuiThemeProvider>
 );
 
 const Home = () => (
   <div>
     <Header />
+    <SideNavi />
     <h2>Home</h2>
     <p>Welcome to ようこそ</p>
     <Link to="/login">ログイン</Link>
