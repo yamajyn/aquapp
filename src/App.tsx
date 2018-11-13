@@ -2,9 +2,9 @@ import * as React from "react";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import Amplify from "aws-amplify";
 import { Authenticator } from "aws-amplify-react";
-import { Header } from "./src/header";
+import { Header } from "./header";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import { SideNavi } from "./src/sideNavi";
+import { SideNavi } from "./sideNavi";
 
 const theme = createMuiTheme({
   palette: {
@@ -20,8 +20,8 @@ const theme = createMuiTheme({
 Amplify.configure({
   Auth: {
     region: "ap-northeast-1", // REQUIRED - Amazon Cognito Region
-    userPoolId: "ap-northeast-1_gsiOZ5rJX", //OPTIONAL - Amazon Cognito User Pool ID
-    userPoolWebClientId: "2fkbpdjej3s1d063uses8oj5vc" //OPTIONAL - Amazon Cognito Web Client ID
+    userPoolId: "ap-northeast-1_mo5hcLxYA", //OPTIONAL - Amazon Cognito User Pool ID
+    userPoolWebClientId: "7sqvchnkmk88ngob1rnco0r6bc" //OPTIONAL - Amazon Cognito Web Client ID
   }
 });
 
@@ -31,7 +31,7 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/login" component={Login} />
-        <Route path="/friends" component={Friends} />
+        <Route path="/tanks" component={Tanks} />
       </Switch>
     </BrowserRouter>
   </MuiThemeProvider>
@@ -52,10 +52,10 @@ const Login = () => (
     <Authenticator />
   </div>
 );
-const Friends = () => (
+const Tanks = () => (
   <div>
-    <h2>Friends</h2>
-    <p>ここにフレンズのリストを書きます</p>
+    <h2>Tanks</h2>
+    <p>ここリスト</p>
   </div>
 );
 

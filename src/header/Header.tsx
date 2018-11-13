@@ -28,7 +28,7 @@ const styles = (theme: Theme) =>
     }
   });
 
-export const HeaderComponent = (props: IProps) => {
+const HeaderComponent = (props: IProps) => {
   const { classes } = props;
   return (
     <div className={classes.root}>
@@ -41,7 +41,7 @@ export const HeaderComponent = (props: IProps) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" color="inherit" className={classes.title}>
+          <Typography variant="h5" color="inherit" className={classes.title}>
             AQUA
           </Typography>
           <Button color="inherit">Login</Button>
