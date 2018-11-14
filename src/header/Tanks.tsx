@@ -11,28 +11,31 @@ import {
   Toolbar
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import { SideNavi } from "../sideNavi";
+import { Header } from "./header";
 
 interface IProps extends WithStyles<typeof styles> {}
 
 const styles = (theme: Theme) =>
   createStyles({
-    root: {
-      flexGrow: 1
-    },
-    title: {
-      flexGrow: 1
-    },
-    menuButton: {
-      marginLeft: -12,
-      marginRight: 20
+    root: {},
+    main: {
+      width: "85%",
+      backgroundColor: "#000",
+      display: "inline-block",
+      verticalAlign: "top"
     }
   });
 
 const TanksComponent = (props: IProps) => {
   const { classes } = props;
   return (
-    <div className={classes.root}>
-      <p>TankList here</p>
+    <div>
+      <Header />
+      <SideNavi />
+      <div className={classes.main}>
+      
+      </div>
     </div>
   );
 };

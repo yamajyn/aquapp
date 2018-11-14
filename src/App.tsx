@@ -5,6 +5,7 @@ import { Authenticator } from "aws-amplify-react";
 import { Header } from "./header";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { SideNavi } from "./sideNavi";
+import { Tanks } from "./header/Tanks";
 
 const theme = createMuiTheme({
   palette: {
@@ -29,34 +30,16 @@ const App = () => (
   <MuiThemeProvider theme={theme}>
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Tanks} />
         <Route path="/login" component={Login} />
-        <Route path="/tanks" component={Tanks} />
       </Switch>
     </BrowserRouter>
   </MuiThemeProvider>
-);
-
-const Home = () => (
-  <div>
-    <Header />
-    <SideNavi />
-    <Link to="/login">test</Link>
-    <h2>Home</h2>
-    <Link to="/login">ログイン</Link>
-  </div>
 );
 const Login = () => (
   <div>
     <Header />
     <Authenticator />
-  </div>
-);
-const Tanks = () => (
-  <div>
-    <Header />
-    <h2>Tanks</h2>
-    <p>ここリスト!!</p>
   </div>
 );
 

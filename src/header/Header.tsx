@@ -18,7 +18,8 @@ interface IProps extends WithStyles<typeof styles> {}
 const styles = (theme: Theme) =>
   createStyles({
     root: {
-      flexGrow: 1
+      flexGrow: 1,
+      width: "100%"
     },
     title: {
       flexGrow: 1
