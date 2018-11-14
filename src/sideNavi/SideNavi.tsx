@@ -23,7 +23,9 @@ const styles = (theme: Theme) =>
     root: {
       width: "15%",
       height: "100%",
-      bottom: 0
+      bottom: 0,
+      top: theme.spacing.unit * 9,
+      position: "absolute"
     }
   });
 

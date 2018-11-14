@@ -10,6 +10,7 @@ import {
   Button,
   Toolbar
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import MenuIcon from "@material-ui/icons/Menu";
 
 interface IProps extends WithStyles<typeof styles> {}
@@ -44,7 +45,12 @@ const HeaderComponent = (props: IProps) => {
           <Typography variant="h5" color="inherit" className={classes.title}>
             AQUA
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button
+            color="inherit"
+            component={({ ...props }) => <Link to="/login" {...props} />}
+          >
+            login
+          </Button>
         </Toolbar>
       </AppBar>
     </div>

@@ -41,8 +41,8 @@ const Home = () => (
   <div>
     <Header />
     <SideNavi />
+    <Link to="/login">test</Link>
     <h2>Home</h2>
-    <p>Welcome to ようこそ</p>
     <Link to="/login">ログイン</Link>
   </div>
 );
@@ -54,8 +54,9 @@ const Login = () => (
 );
 const Tanks = () => (
   <div>
+    <Header />
     <h2>Tanks</h2>
-    <p>ここリスト</p>
+    <p>ここリスト!!</p>
   </div>
 );
 
