@@ -19,9 +19,11 @@ import StarBorderIcon from "@material-ui/icons/StarBorderRounded";
 import { SideNavi } from "../sideNavi";
 import { Header } from "./header";
 import { Link } from "react-router-dom";
-import { API, Auth } from "aws-amplify";
+import { API } from "aws-amplify";
+import { withRouter, RouteComponentProps } from "react-router";
+import { token } from "../util/api";
 
-interface IProps extends WithStyles<typeof styles> {}
+interface IProps extends WithStyles<typeof styles>, RouteComponentProps {}
 interface IState {
   data: [
     {
@@ -59,7 +61,7 @@ const styles = (theme: Theme) =>
   });
 
 class TanksComponent extends React.Component<IProps, IState> {
-  constructor(props) {
+  constructor(props: IProps) {
     super(props);
     this.state = {
       data: []
@@ -75,13 +77,7 @@ class TanksComponent extends React.Component<IProps, IState> {
     //     alert("サインインに失敗しました");
     //     return;
     //   });
-    const token = (() => {
-      for (let strage in localStorage) {
-        if (strage.includes("idToken")) {
-          return localStorage.getItem(strage);
-        }
-      }
-    })();
+
     let option = {
       headers: {
         Authorization: `Bearer ${token}`
@@ -95,6 +91,8 @@ class TanksComponent extends React.Component<IProps, IState> {
         });
       })
       .catch(err => {
+        localStorage.clear();
+        this.props.history.push("/login");
         console.log(err);
       });
   }
@@ -137,4 +135,4 @@ class TanksComponent extends React.Component<IProps, IState> {
   }
 }
 
-export const Tanks = withStyles(styles)(TanksComponent);
+export const Tanks = withStyles(styles)(withRouter(TanksComponent));

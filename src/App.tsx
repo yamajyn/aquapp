@@ -41,7 +41,7 @@ const App = () => (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Tanks} />
-        <Route exact path="/tank/condition/*" component={Condition} />
+        <Route exact path="/tank/condition/:id" component={Condition} />
         <Route path="/login" component={Login} />
       </Switch>
     </BrowserRouter>

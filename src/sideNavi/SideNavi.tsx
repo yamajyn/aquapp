@@ -21,6 +21,7 @@ interface IProps extends WithStyles<typeof styles> {}
 const styles = (theme: Theme) =>
   createStyles({
     root: {
+      verticalAlign: "top",
       width: "15%",
       height: "100%",
       display: "inline-block"
