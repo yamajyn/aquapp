@@ -16,10 +16,10 @@ import {
   GridListTileBar
 } from "@material-ui/core";
 import StarBorderIcon from "@material-ui/icons/StarBorderRounded";
-import { SideNavi } from "../sideNavi";
+import { SideNavi } from "./sideNavi";
 import { Header } from "./header";
 import { Link } from "react-router-dom";
-import { API } from "aws-amplify";
+import { API, Auth } from "aws-amplify";
 import { withRouter, RouteComponentProps } from "react-router";
 import { token } from "../util/api";
 
@@ -70,6 +70,7 @@ class TanksComponent extends React.Component<IProps, IState> {
   componentDidMount() {
     // Auth.signIn("yamamoto", "A5jyunnya27")
     //   .then(data => {
+    //     console.log(data);
     //     alert("サインインに成功しました");
     //   })
     //   .catch(err => {

@@ -2,10 +2,11 @@ import * as React from "react";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 import Amplify from "aws-amplify";
 import { Authenticator } from "aws-amplify-react";
-import { Header, Condition } from "./header";
+import { Header } from "./components/header";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import { SideNavi } from "./sideNavi";
-import { Tanks } from "./header/Tanks";
+import { SideNavi } from "./components//sideNavi";
+import { Tanks } from "./components/Tanks";
+import { Condition } from "./components/Condition";
 
 const theme = createMuiTheme({
   palette: {

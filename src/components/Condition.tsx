@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createStyles, WithStyles, Theme, withStyles } from "@material-ui/core";
-import { SideNavi } from "../sideNavi";
+import { SideNavi } from "./sideNavi";
 import { Header } from "./header";
 import { RouteComponentProps, withRouter } from "react-router";
 import { token } from "../util/api";
@@ -130,6 +130,15 @@ class ConditionComponent extends React.Component<IProps, IState> {
               beginAtZero: true,
               min: 18,
               max: 25
+            }
+          }
+        ],
+        xAxes: [
+          {
+            type: "time", // specify time series type
+            distribution: "linear", // use 'linear'(default) or 'series'
+            ticks: {
+              source: "data"
             }
           }
         ]
