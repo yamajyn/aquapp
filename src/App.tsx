@@ -4,7 +4,6 @@ import Amplify from "aws-amplify";
 import { Authenticator } from "aws-amplify-react";
 import { Header } from "./components/header";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import { SideNavi } from "./components//sideNavi";
 import { Tanks } from "./components/Tanks";
 import { Condition } from "./components/Condition";
 

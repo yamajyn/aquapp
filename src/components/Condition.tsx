@@ -53,7 +53,7 @@ class ConditionComponent extends React.Component<IProps, IState> {
     API.get("AQUAPI", `tanks/condition/${this.props.match.params.id}`, option)
       .then(response => {
         this.setState({
-          data: response
+          data: response.reverse()
         });
       })
       .catch(err => {
@@ -129,7 +129,7 @@ class ConditionComponent extends React.Component<IProps, IState> {
             ticks: {
               beginAtZero: true,
               min: 18,
-              max: 25
+              max: 24
             }
           }
         ],
