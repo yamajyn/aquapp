@@ -21,6 +21,8 @@ interface IState {
       conditions: {
         temperature: string;
         water_temperature: string;
+        humidity: string;
+        pressure: string;
       };
       createdAt: string;
     }?
@@ -119,7 +121,7 @@ class ConditionComponent extends React.Component<IProps, IState> {
       return d.conditions.temperature;
     });
     chartData.datasets[1].data = this.state.data.map(d => {
-      return d.conditions.water_temperature;
+      return d.conditions.humidity;
     });
     const options = {
       maintainAspectRatio: false,
@@ -129,7 +131,7 @@ class ConditionComponent extends React.Component<IProps, IState> {
             ticks: {
               beginAtZero: true,
               min: 18,
-              max: 24
+              max: 25
             }
           }
         ],
