@@ -7,6 +7,7 @@ import { token } from "../util/api";
 import { API } from "aws-amplify";
 import { Line } from "react-chartjs-2";
 import moment = require("moment");
+import { Mode } from "../enum";
 
 interface MatchParams {
   id: string;
@@ -16,6 +17,7 @@ interface IProps
   extends WithStyles<typeof styles>,
     RouteComponentProps<MatchParams> {}
 interface IState {
+  mode: Number;
   data: [
     {
       conditions: {
@@ -43,6 +45,7 @@ class ConditionComponent extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
+      mode: Mode.WaterTemperature,
       data: []
     };
   }
@@ -64,6 +67,9 @@ class ConditionComponent extends React.Component<IProps, IState> {
         // this.props.history.push("/login");
       });
   }
+  onClickSideNavi = (mode: Number) => {
+    this.setState({ mode: mode });
+  };
   render() {
     const { classes } = this.props;
 
@@ -118,11 +124,26 @@ class ConditionComponent extends React.Component<IProps, IState> {
       return moment(d.createdAt).format("YYYY/MM/DD HH:mm");
     });
     chartData.datasets[0].data = this.state.data.map(d => {
-      return d.conditions.temperature;
+      switch (this.state.mode) {
+        case Mode.WaterTemperature:
+          return;
+        case Mode.Temperature:
+          return d.conditions.temperature;
+        case Mode.Temperature:
+          return d.conditions.temperature;
+        case Mode.Pressure:
+          return d.conditions.pressure;
+        case Mode.Humidity:
+          return d.conditions.humidity;
+        case Mode.Illumination:
+          return;
+        default:
+          return d.conditions.temperature;
+      }
     });
-    chartData.datasets[1].data = this.state.data.map(d => {
-      return d.conditions.humidity;
-    });
+    // chartData.datasets[1].data = this.state.data.map(d => {
+    //   return d.conditions.humidity;
+    // });
     const options = {
       maintainAspectRatio: false,
       scales: {
@@ -130,27 +151,21 @@ class ConditionComponent extends React.Component<IProps, IState> {
           {
             ticks: {
               beginAtZero: true,
-              min: 18,
-              max: 25
+              min: parseInt(Math.min.apply(null, chartData.datasets[0].data)) - 1,
+              max: parseInt(Math.max.apply(null, chartData.datasets[0].data)) + 1
             }
           }
         ],
         xAxes: [
-          {
-            type: "time", // specify time series type
-            distribution: "linear", // use 'linear'(default) or 'series'
-            ticks: {
-              source: "data"
-            }
-          }
+          { type: "time", distribution: "linear", ticks: { source: "data" } }
         ]
       }
-    };
+    }; // specify time series type // use 'linear'(default) or 'series'
 
     return (
       <div>
         <Header />
-        <SideNavi />
+        <SideNavi onClick={this.onClickSideNavi} />
         <div className={classes.root}>
           <Line data={chartData} options={options} type="line" />
         </div>
